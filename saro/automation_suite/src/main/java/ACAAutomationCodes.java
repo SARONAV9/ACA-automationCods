@@ -69,17 +69,17 @@ public class ACAAutomationCodes {
         TestUtility.checkElementExistence(By.xpath("//p[@class='enroll-labels']"));
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Ավարտել']")));
-        WebElement avart = TestUtility.driver.findElement(By.xpath("//span[text()='Ավարտել']"));
-        avart.click();
+        WebElement finish = TestUtility.driver.findElement(By.xpath("//span[text()='Ավարտել']"));
+        finish.click();
     }
 
     @Test(priority = 2)
     public void register_to_partner() {
         TestUtility.driver.navigate().back();
 
-        String[] gorcnkerArray = {"//div[@id='menuToggle']","//div[@id='menuToggle']","//*[@id='partnerThanks']/a"};
-        for (int i = 0;i < gorcnkerArray.length; i++) {
-            TestUtility.driver.findElement(By.xpath(gorcnkerArray[i])).click();
+        String[] partner = {"//div[@id='menuToggle']","//div[@id='menuToggle']","//*[@id='partnerThanks']/a"};
+        for (int i = 0;i < partner.length; i++) {
+            TestUtility.driver.findElement(By.xpath(partner[i])).click();
         }
 
         String[] array = {"//input[@id='partnerName']","//input[@id='partnerEmail']","//input[@id='partnerPhone']"};
@@ -91,8 +91,8 @@ public class ACAAutomationCodes {
             TestUtility.driver.findElement(By.xpath(array[i])).sendKeys(data[i]);
         }
 
-        WebElement partner = TestUtility.driver.findElement(By.xpath("//*[@id='partnerSubmit']"));
-        partner.click();
+        WebElement submit = TestUtility.driver.findElement(By.xpath("//*[@id='partnerSubmit']"));
+        submit.click();
 
         //Checking the warning message
         TestUtility.checkElementExistence(By.xpath("//label[text()='Please provide a valid e-mail address.']"));
@@ -110,11 +110,11 @@ public class ACAAutomationCodes {
         String[] arrUrl = {"https://www.aca.am/hy/#headerwrap","https://www.aca.am/hy/#courses","https://www.aca.am/hy/#partners","https://www.aca.am/hy/#subscribe"};
         String[] menu = { "//a[@href='#headerwrap']","//a[@href='#courses']","//a[@href='#partners']","//a[@href='#subscribe']"};
 
-        for (int i = 0;i < menu.length; i++){
+        for (int i = 0;i < menu.length; i++) {
             TestUtility.driver.findElement(By.xpath(menu[i])).click();
             TestUtility.urlCheck(arrUrl[i]);
             String[]menuElements = {"//a[@href='#description']","//img[@class ='grad-ico']","//a[@href='#partnerbox']","//div[@class='info col-sm-4 col-xs-12 contact-box']"};
-            for (int a = 0;a < menuElements.length; a++) {
+            for (int a = 0; a < menuElements.length; a++) {
                 TestUtility.checkElementExistence(By.xpath(menuElements[a]));
             }
         }
